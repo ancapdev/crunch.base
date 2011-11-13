@@ -3,8 +3,6 @@
 
 include(configure.cmake)
 
-vpm_depend(crunch.test)
-
 if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
     ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
   set(_platformFiles
@@ -45,12 +43,16 @@ if (UNIX)
   target_link_libraries(crunch_base_lib rt)
 endif()
 
-add_executable(crunch_base_test
-  test/intrusive_ptr_tests.cpp
-  test/memory_tests.cpp)
+if(NOT CRUNCH_NO_TESTS)
+  vpm_depend(crunch.test)
 
-target_link_libraries(crunch_base_test
-  crunch_base_lib
-  crunch_test_lib)
+  add_executable(crunch_base_test
+    test/intrusive_ptr_tests.cpp
+    test/memory_tests.cpp)
 
-crunch_add_test(crunch_base_test)
+  target_link_libraries(crunch_base_test
+    crunch_base_lib
+    crunch_test_lib)
+
+  crunch_add_test(crunch_base_test)
+endif()
