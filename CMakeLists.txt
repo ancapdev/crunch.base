@@ -3,7 +3,7 @@
 
 include(configure.cmake)
 
-vpm_depend(crunch_test)
+vpm_depend(crunch.test)
 
 if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
     ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
