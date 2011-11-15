@@ -156,6 +156,10 @@ inline Duration operator - (Duration lhs, Duration rhs)
     return lhs -= rhs;
 }
 
+inline Duration::Duration(int64 nanoseconds)
+    : mNanoseconds(nanoseconds)
+{}
+
 }
 
 #endif
