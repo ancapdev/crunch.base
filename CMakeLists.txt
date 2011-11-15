@@ -21,6 +21,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/assert.hpp
   include/crunch/base/bit_utility.hpp
   include/crunch/base/debug.hpp
+  include/crunch/base/duration.hpp
   include/crunch/base/exception.hpp
   include/crunch/base/enum_class.hpp
   include/crunch/base/high_frequency_timer.hpp
@@ -35,6 +36,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/stream_as_binary.hpp
   include/crunch/base/stdint.hpp
   source/assert.cpp
+  source/duration.cpp
   source/platform/${PLATFORM_NAME}/assert.cpp
   source/platform/${PLATFORM_NAME}/high_frequency_timer.cpp
   ${_platformFiles})
