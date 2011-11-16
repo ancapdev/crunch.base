@@ -21,6 +21,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/assert.hpp
   include/crunch/base/bit_utility.hpp
   include/crunch/base/debug.hpp
+  include/crunch/base/declval.hpp
   include/crunch/base/duration.hpp
   include/crunch/base/exception.hpp
   include/crunch/base/enum_class.hpp
@@ -33,6 +34,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/novtable.hpp
   include/crunch/base/override.hpp
   include/crunch/base/platform.hpp
+  include/crunch/base/result_of.hpp
   include/crunch/base/stack_alloc.hpp
   include/crunch/base/stream_as_binary.hpp
   include/crunch/base/stdint.hpp
