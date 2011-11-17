@@ -11,9 +11,7 @@ if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
 endif()
 
 if(WIN32)
-  set(_platformFiles
-    ${_platformFiles}
-    include/crunch/base/platform/win32/wintypes.hpp)
+  list(APPEND _platformFiles include/crunch/base/platform/win32/wintypes.hpp)
 endif()
 
 vpm_add_library(crunch_base_lib

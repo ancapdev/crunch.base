@@ -7,6 +7,12 @@
 
 #include <Windows.h>
 
+// Merely a convenient place to put Visual Leak Detector include
+// assert.cpp is very unlikely to be unreferenced
+#if defined (CRUNCH_VLD_ENABLED)
+#   include <vld.h>
+#endif
+
 namespace Crunch { namespace Detail {
 
 bool DefaultAssertHandler(char const* condition, char const* file, int line, char const* message)
