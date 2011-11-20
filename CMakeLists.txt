@@ -27,6 +27,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/inline.hpp
   include/crunch/base/intrusive_ptr.hpp
   include/crunch/base/memory.hpp
+  include/crunch/base/noexcept.hpp
   include/crunch/base/noncopyable.hpp
   include/crunch/base/noreturn.hpp
   include/crunch/base/novtable.hpp

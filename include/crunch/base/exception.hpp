@@ -4,6 +4,7 @@
 #ifndef CRUNCH_BASE_EXCEPTION_HPP
 #define CRUNCH_BASE_EXCEPTION_HPP
 
+#include "crunch/base/noexcept.hpp"
 #include "crunch/base/override.hpp"
 
 #include <exception>
@@ -18,9 +19,9 @@ public:
         : mMessage(message)
     {}
 
-    ~Exception() noexcept {}
+    ~Exception() CRUNCH_NOEXCEPT {}
 
-    char const* what() const noexcept CRUNCH_OVERRIDE
+    char const* what() const CRUNCH_NOEXCEPT CRUNCH_OVERRIDE
     {
         return mMessage.c_str();
     }
