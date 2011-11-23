@@ -10,17 +10,17 @@
 
 namespace Crunch {
 
-CpuidResult QueryCpuid(uint32 function, uint32 extendedFunction)
+CpuidResult QueryCpuid(std::uint32_t function, std::uint32_t extendedFunction)
 {
 #if defined (CRUNCH_COMPILER_MSVC)
     int temp[4];
     __cpuidex(temp, static_cast<int>(function), static_cast<int>(extendedFunction));
     CpuidResult const result =
     {
-        static_cast<uint32>(temp[0]),
-        static_cast<uint32>(temp[1]),
-        static_cast<uint32>(temp[2]),
-        static_cast<uint32>(temp[3])
+        static_cast<std::uint32_t>(temp[0]),
+        static_cast<std::uint32_t>(temp[1]),
+        static_cast<std::uint32_t>(temp[2]),
+        static_cast<std::uint32_t>(temp[3])
     };
     return result;
 #elif defined (CRUNCH_COMPILER_GCC)
@@ -53,7 +53,7 @@ std::string GetCpuidVendorId()
     return result;
 }
 
-uint32 GetCpuidMaxFunction()
+std::uint32_t GetCpuidMaxFunction()
 {
     return QueryCpuid(CpuidFunction::VendorId).eax;
 }

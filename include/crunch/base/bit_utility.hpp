@@ -4,13 +4,13 @@
 #ifndef CRUNCH_BASE_BIT_UTILITY_HPP
 #define CRUNCH_BASE_BIT_UTILITY_HPP
 
-#include "crunch/base/stdint.hpp"
+#include <cstdint>
 
 namespace Crunch {
 
 // Extract bits [first:last]
 template<typename T>
-T ExtractBits(T value, uint8 first, uint8 last)
+T ExtractBits(T value, std::uint8_t first, std::uint8_t last)
 {
     if (last >= sizeof(T) * 8 - 1)
         return value >> first;

@@ -6,7 +6,7 @@
 
 #include "crunch/base/enum_class.hpp"
 #include "crunch/base/platform.hpp"
-#include "crunch/base/stdint.hpp"
+#include <cstdint>
 
 #if !defined (CRUNCH_ARCH_X86)
 #   error "Unsupported archicture"
@@ -18,13 +18,13 @@ namespace Crunch {
 
 struct CpuidResult
 {
-    uint32 eax;
-    uint32 ebx;
-    uint32 ecx;
-    uint32 edx;
+    std::uint32_t eax;
+    std::uint32_t ebx;
+    std::uint32_t ecx;
+    std::uint32_t edx;
 };
 
-CRUNCH_ENUM_CLASS CpuidFunction : uint32
+CRUNCH_ENUM_CLASS CpuidFunction : std::uint32_t
 {
     VendorId = 0,
     ProcessorInfoAndFeatures = 1,
@@ -41,15 +41,15 @@ CRUNCH_ENUM_CLASS CpuidFunction : uint32
     AddressSizes = 0x80000008
 };
 
-CpuidResult QueryCpuid(uint32 function, uint32 extendedFunction = 0);
+CpuidResult QueryCpuid(std::uint32_t function, std::uint32_t extendedFunction = 0);
 
-inline CpuidResult QueryCpuid(CpuidFunction function, uint32 extendedFunction = 0)
+inline CpuidResult QueryCpuid(CpuidFunction function, std::uint32_t extendedFunction = 0)
 {
-    return QueryCpuid(static_cast<uint32>(function), extendedFunction);
+    return QueryCpuid(static_cast<std::uint32_t>(function), extendedFunction);
 }
 
 std::string GetCpuidVendorId();
-uint32 GetCpuidMaxFunction();
+std::uint32_t GetCpuidMaxFunction();
 
 }
 

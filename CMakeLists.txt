@@ -36,7 +36,6 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/result_of.hpp
   include/crunch/base/stack_alloc.hpp
   include/crunch/base/stream_as_binary.hpp
-  include/crunch/base/stdint.hpp
   source/assert.cpp
   source/duration.cpp
   source/platform/${PLATFORM_NAME}/assert.cpp

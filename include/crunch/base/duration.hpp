@@ -4,7 +4,7 @@
 #ifndef CRUNCH_BASE_DURATION_HPP
 #define CRUNCH_BASE_DURATION_HPP
 
-#include "crunch/base/stdint.hpp"
+#include <cstdint>
 
 namespace Crunch {
 
@@ -14,25 +14,25 @@ namespace Crunch {
 class Duration
 {
 public:
-    static Duration Nanoseconds(int64 nanoseconds);
-    static Duration Microseconds(int64 microseconds);
-    static Duration Milliseconds(int64 milliseconds);
-    static Duration Seconds(int64 seconds);
-    static Duration Minutes(int32 minutes);
-    static Duration Hours(int32 hours);
-    static Duration Days(int32 days);
+    static Duration Nanoseconds(std::int64_t nanoseconds);
+    static Duration Microseconds(std::int64_t microseconds);
+    static Duration Milliseconds(std::int64_t milliseconds);
+    static Duration Seconds(std::int64_t seconds);
+    static Duration Minutes(std::int32_t minutes);
+    static Duration Hours(std::int32_t hours);
+    static Duration Days(std::int32_t days);
 
     static Duration const Zero;
     static Duration const PositiveInfinity;
     static Duration const NegativeInfinity;
 
-    int64 GetTotalNanoseconds() const;
-    int64 GetTotalMicroseconds() const;
-    int64 GetTotalMilliseconds() const;
-    int64 GetTotalSeconds() const;
-    int32 GetTotalMinutes() const;
-    int32 GetTotalHours() const;
-    int32 GetTotalDays() const;
+    std::int64_t GetTotalNanoseconds() const;
+    std::int64_t GetTotalMicroseconds() const;
+    std::int64_t GetTotalMilliseconds() const;
+    std::int64_t GetTotalSeconds() const;
+    std::int32_t GetTotalMinutes() const;
+    std::int32_t GetTotalHours() const;
+    std::int32_t GetTotalDays() const;
 
     bool IsNegative() const;
 
@@ -42,86 +42,86 @@ public:
     Duration& operator -= (Duration rhs);
 
 private:
-    static int64 const NanosecondsPerMicrosecond = 1000ll;
-    static int64 const NanosecondsPerMillisecond = 1000000ll;
-    static int64 const NanosecondsPerSecond = 1000000000ll;
-    static int64 const NanosecondsPerMinute = 60ll * NanosecondsPerSecond;
-    static int64 const NanosecondsPerHour = 60ll * NanosecondsPerMinute;
-    static int64 const NanosecondsPerDay = 24 * NanosecondsPerHour;
+    static std::int64_t const NanosecondsPerMicrosecond = 1000ll;
+    static std::int64_t const NanosecondsPerMillisecond = 1000000ll;
+    static std::int64_t const NanosecondsPerSecond = 1000000000ll;
+    static std::int64_t const NanosecondsPerMinute = 60ll * NanosecondsPerSecond;
+    static std::int64_t const NanosecondsPerHour = 60ll * NanosecondsPerMinute;
+    static std::int64_t const NanosecondsPerDay = 24 * NanosecondsPerHour;
 
-    Duration(int64 nanoseconds);
+    Duration(std::int64_t nanoseconds);
 
-    int64 mNanoseconds;
+    std::int64_t mNanoseconds;
 };
 
-inline Duration Duration::Nanoseconds(int64 nanoseconds)
+inline Duration Duration::Nanoseconds(std::int64_t nanoseconds)
 {
     return Duration(nanoseconds);
 }
 
-inline Duration Duration::Microseconds(int64 microseconds)
+inline Duration Duration::Microseconds(std::int64_t microseconds)
 {
     return Duration(microseconds * NanosecondsPerMicrosecond);
 }
 
-inline Duration Duration::Milliseconds(int64 milliseconds)
+inline Duration Duration::Milliseconds(std::int64_t milliseconds)
 {
     return Duration(milliseconds * NanosecondsPerMillisecond);
 }
 
-inline Duration Duration::Seconds(int64 seconds)
+inline Duration Duration::Seconds(std::int64_t seconds)
 {
     return Duration(seconds * NanosecondsPerSecond);
 }
 
-inline Duration Duration::Minutes(int32 minutes)
+inline Duration Duration::Minutes(std::int32_t minutes)
 {
     return Duration(minutes * NanosecondsPerMinute);
 }
 
-inline Duration Duration::Hours(int32 hours)
+inline Duration Duration::Hours(std::int32_t hours)
 {
     return Duration(hours * NanosecondsPerHour);
 }
 
-inline Duration Duration::Days(int32 days)
+inline Duration Duration::Days(std::int32_t days)
 {
     return Duration(days * NanosecondsPerDay);
 }
 
-inline int64 Duration::GetTotalNanoseconds() const
+inline std::int64_t Duration::GetTotalNanoseconds() const
 {
     return mNanoseconds;
 }
 
-inline int64 Duration::GetTotalMicroseconds() const
+inline std::int64_t Duration::GetTotalMicroseconds() const
 {
     return mNanoseconds / NanosecondsPerMicrosecond;
 }
 
-inline int64 Duration::GetTotalMilliseconds() const
+inline std::int64_t Duration::GetTotalMilliseconds() const
 {
     return mNanoseconds / NanosecondsPerMillisecond;
 }
 
-inline int64 Duration::GetTotalSeconds() const
+inline std::int64_t Duration::GetTotalSeconds() const
 {
     return mNanoseconds / NanosecondsPerSecond;
 }
 
-inline int32 Duration::GetTotalMinutes() const
+inline std::int32_t Duration::GetTotalMinutes() const
 {
-    return static_cast<int32>(mNanoseconds / NanosecondsPerMinute);
+    return static_cast<std::int32_t>(mNanoseconds / NanosecondsPerMinute);
 }
 
-inline int32 Duration::GetTotalHours() const
+inline std::int32_t Duration::GetTotalHours() const
 {
-    return static_cast<int32>(mNanoseconds / NanosecondsPerHour);
+    return static_cast<std::int32_t>(mNanoseconds / NanosecondsPerHour);
 }
 
-inline int32 Duration::GetTotalDays() const
+inline std::int32_t Duration::GetTotalDays() const
 {
-    return static_cast<int32>(mNanoseconds / NanosecondsPerDay);
+    return static_cast<std::int32_t>(mNanoseconds / NanosecondsPerDay);
 }
 
 inline bool Duration::IsNegative() const
@@ -156,7 +156,7 @@ inline Duration operator - (Duration lhs, Duration rhs)
     return lhs -= rhs;
 }
 
-inline Duration::Duration(int64 nanoseconds)
+inline Duration::Duration(std::int64_t nanoseconds)
     : mNanoseconds(nanoseconds)
 {}
 
