@@ -11,7 +11,8 @@ HighFrequencyTimer::HighFrequencyTimer()
 {
     LARGE_INTEGER frequency;
     QueryPerformanceFrequency(&frequency);
-    mInvFrequency = 1.0 / static_cast<double>(frequency.QuadPart);
+    mFrequency = frequency.QuadPart;
+    mInvFrequency = 1.0 / static_cast<double>(mFrequency);
 }
 
 HighFrequencyTimer::SampleType HighFrequencyTimer::Sample() const
@@ -19,6 +20,11 @@ HighFrequencyTimer::SampleType HighFrequencyTimer::Sample() const
     LARGE_INTEGER sample;
     QueryPerformanceCounter(&sample);
     return sample.QuadPart;
+}
+
+Duration HighFrequencyTimer::GetElapsedTime(SampleType begin, SampleType end) const
+{
+    return Duration::Nanoseconds(((end - begin) * 1000000000ll) / mFrequency);
 }
 
 double HighFrequencyTimer::GetElapsedSeconds(SampleType begin, SampleType end) const

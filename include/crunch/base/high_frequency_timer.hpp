@@ -5,6 +5,7 @@
 #define CRUNCH_HIGH_FREQUENCY_TIMER_HPP
 
 #include "crunch/base/platform.hpp"
+#include "crunch/base/duration.hpp"
 
 #if defined (CRUNCH_PLATFORM_WIN32)
 #elif defined (CRUNCH_PLATFORM_LINUX)
@@ -26,6 +27,7 @@ public:
 #endif
 
     SampleType Sample() const;
+    Duration GetElapsedTime(SampleType begin, SampleType end) const;
     double GetElapsedSeconds(SampleType begin, SampleType end) const;
     double GetElapsedMilliseconds(SampleType begin, SampleType end) const;
     double GetElapsedMicroseconds(SampleType begin, SampleType end) const;
@@ -33,6 +35,7 @@ public:
 
 private:
 #if defined (CRUNCH_PLATFORM_WIN32)
+    __int64 mFrequency;
     double mInvFrequency;
 #endif
 };
