@@ -160,6 +160,36 @@ inline Duration::Duration(std::int64_t nanoseconds)
     : mNanoseconds(nanoseconds)
 {}
 
+inline bool operator < (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() < rhs.GetTotalNanoseconds();
+}
+
+inline bool operator > (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() > rhs.GetTotalNanoseconds();
+}
+
+inline bool operator <= (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() <= rhs.GetTotalNanoseconds();
+}
+
+inline bool operator >= (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() >= rhs.GetTotalNanoseconds();
+}
+
+inline bool operator == (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() == rhs.GetTotalNanoseconds();
+}
+
+inline bool operator != (Duration lhs, Duration rhs)
+{
+    return lhs.GetTotalNanoseconds() != rhs.GetTotalNanoseconds();
+}
+
 }
 
 #endif
