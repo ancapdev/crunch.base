@@ -24,9 +24,11 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/exception.hpp
   include/crunch/base/enum_class.hpp
   include/crunch/base/high_frequency_timer.hpp
+  include/crunch/base/ignore_result.hpp
   include/crunch/base/inline.hpp
   include/crunch/base/intrusive_ptr.hpp
   include/crunch/base/memory.hpp
+  include/crunch/base/must_check_result.hpp
   include/crunch/base/noexcept.hpp
   include/crunch/base/noncopyable.hpp
   include/crunch/base/noreturn.hpp
