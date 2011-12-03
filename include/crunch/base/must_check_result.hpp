@@ -8,6 +8,10 @@
 
 #if defined (CRUNCH_COMPILER_GCC)
 #   define CRUNCH_MUST_CHECK_RESULT __attribute__((warn_unused_result))
+#elif defined (CRUNCH_COMPILER_MSVC) && (CRUNCH_PTR_SIZE == 4)
+#   include <CodeAnalysis/SourceAnnotations.h>
+    using namespace vc_attributes;
+#   define CRUNCH_MUST_CHECK_RESULT [returnvalue:Post(MustCheck=Yes)]
 #else
 #   define CRUNCH_MUST_CHECK_RESULT
 #endif
