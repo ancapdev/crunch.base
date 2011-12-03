@@ -12,6 +12,13 @@ HighFrequencyTimer::SampleType HighFrequencyTimer::Sample() const
     return sample;
 }
 
+Duration HighFrequencyTimer::GetElapsedTime(SampleType begin, SampleType end) const
+{
+    return
+        Duration::Seconds(difftime(end.tv_sec, begin.tv_sec)) + 
+        Duration::Nanoseconds(end.tv_nsec - begin.tv_nsec);
+}
+
 double HighFrequencyTimer::GetElapsedSeconds(SampleType begin, SampleType end) const
 {
     return difftime(end.tv_sec, begin.tv_sec) + (end.tv_nsec - begin.tv_nsec) / 1000000000.0;
