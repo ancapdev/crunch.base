@@ -37,6 +37,11 @@ public:
     bool IsNegative() const;
 
     bool operator == (Duration rhs) const;
+    bool operator != (Duration rhs) const;
+    bool operator < (Duration rhs) const;
+    bool operator > (Duration rhs) const;
+    bool operator <= (Duration rhs) const;
+    bool operator >= (Duration rhs) const;
 
     Duration& operator += (Duration rhs);
     Duration& operator -= (Duration rhs);
@@ -134,6 +139,31 @@ inline bool Duration::operator == (Duration rhs) const
     return mNanoseconds == rhs.mNanoseconds;
 }
 
+inline bool Duration::operator != (Duration rhs) const
+{
+    return mNanoseconds != rhs.mNanoseconds;
+}
+
+inline bool Duration::operator < (Duration rhs) const
+{
+    return mNanoseconds < rhs.mNanoseconds;
+}
+
+inline bool Duration::operator > (Duration rhs) const
+{
+    return mNanoseconds > rhs.mNanoseconds;
+}
+
+inline bool Duration::operator <= (Duration rhs) const
+{
+    return mNanoseconds <= rhs.mNanoseconds;
+}
+
+inline bool Duration::operator >= (Duration rhs) const
+{
+    return mNanoseconds >= rhs.mNanoseconds;
+}
+
 inline Duration& Duration::operator += (Duration rhs)
 {
     mNanoseconds += rhs.mNanoseconds;
@@ -159,36 +189,6 @@ inline Duration operator - (Duration lhs, Duration rhs)
 inline Duration::Duration(std::int64_t nanoseconds)
     : mNanoseconds(nanoseconds)
 {}
-
-inline bool operator < (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() < rhs.GetTotalNanoseconds();
-}
-
-inline bool operator > (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() > rhs.GetTotalNanoseconds();
-}
-
-inline bool operator <= (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() <= rhs.GetTotalNanoseconds();
-}
-
-inline bool operator >= (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() >= rhs.GetTotalNanoseconds();
-}
-
-inline bool operator == (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() == rhs.GetTotalNanoseconds();
-}
-
-inline bool operator != (Duration lhs, Duration rhs)
-{
-    return lhs.GetTotalNanoseconds() != rhs.GetTotalNanoseconds();
-}
 
 }
 
