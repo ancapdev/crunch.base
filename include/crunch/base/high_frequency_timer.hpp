@@ -1,11 +1,12 @@
 // Copyright (c) 2011, Christian Rorvik
 // Distributed under the Simplified BSD License (See accompanying file LICENSE.txt)
 
-#ifndef CRUNCH_HIGH_FREQUENCY_TIMER_HPP
-#define CRUNCH_HIGH_FREQUENCY_TIMER_HPP
+#ifndef CRUNCH_BASE_HIGH_FREQUENCY_TIMER_HPP
+#define CRUNCH_BASE_HIGH_FREQUENCY_TIMER_HPP
 
-#include "crunch/base/platform.hpp"
+#include "crunch/base/api.hpp"
 #include "crunch/base/duration.hpp"
+#include "crunch/base/platform.hpp"
 
 #if defined (CRUNCH_PLATFORM_WIN32)
 #elif defined (CRUNCH_PLATFORM_LINUX)
@@ -16,7 +17,7 @@
 
 namespace Crunch {
 
-class HighFrequencyTimer
+class CRUNCH_BASE_API HighFrequencyTimer
 {
 public:
 #if defined (CRUNCH_PLATFORM_WIN32)

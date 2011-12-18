@@ -4,6 +4,7 @@
 #ifndef CRUNCH_BASE_ASSERT_HPP
 #define CRUNCH_BASE_ASSERT_HPP
 
+#include "crunch/base/api.hpp"
 #include "crunch/base/debug.hpp"
 
 #include <functional>
@@ -16,11 +17,11 @@ namespace Crunch {
 /// \param message A message describing the assertion. Can be null.
 typedef std::function<bool (char const* condition, char const* file, int line, char const* message)> AssertHandler;
 
-void SetAssertHandler(AssertHandler const& handler);
-AssertHandler const& GetAssertHandler();
+CRUNCH_BASE_API void SetAssertHandler(AssertHandler const& handler);
+CRUNCH_BASE_API AssertHandler const& GetAssertHandler();
 
-bool HandleAssert(char const* condition, char const* file, int line);
-bool HandleAssert(char const* condition, char const* file, int line, char const* format, ...);
+CRUNCH_BASE_API bool HandleAssert(char const* condition, char const* file, int line);
+CRUNCH_BASE_API bool HandleAssert(char const* condition, char const* file, int line, char const* format, ...);
 
 }
 

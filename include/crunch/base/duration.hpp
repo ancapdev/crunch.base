@@ -4,6 +4,8 @@
 #ifndef CRUNCH_BASE_DURATION_HPP
 #define CRUNCH_BASE_DURATION_HPP
 
+#include "crunch/base/api.hpp"
+
 #include <cstdint>
 
 namespace Crunch {
@@ -11,7 +13,7 @@ namespace Crunch {
 /// Duration of time
 /// Range: +/- 292 years
 /// Resolution: 1 nanosecond
-class Duration
+class CRUNCH_BASE_API Duration
 {
 public:
     static Duration Nanoseconds(std::int64_t nanoseconds);

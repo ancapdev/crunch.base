@@ -4,6 +4,7 @@
 #ifndef CRUNCH_BASE_ARCH_X86_CPUID_HPP
 #define CRUNCH_BASE_ARCH_X86_CPUID_HPP
 
+#include "crunch/base/api.hpp"
 #include "crunch/base/enum_class.hpp"
 #include "crunch/base/platform.hpp"
 #include <cstdint>
@@ -41,15 +42,15 @@ CRUNCH_ENUM_CLASS CpuidFunction : std::uint32_t
     AddressSizes = 0x80000008
 };
 
-CpuidResult QueryCpuid(std::uint32_t function, std::uint32_t extendedFunction = 0);
+CRUNCH_BASE_API CpuidResult QueryCpuid(std::uint32_t function, std::uint32_t extendedFunction = 0);
 
 inline CpuidResult QueryCpuid(CpuidFunction function, std::uint32_t extendedFunction = 0)
 {
     return QueryCpuid(static_cast<std::uint32_t>(function), extendedFunction);
 }
 
-std::string GetCpuidVendorId();
-std::uint32_t GetCpuidMaxFunction();
+CRUNCH_BASE_API std::string GetCpuidVendorId();
+CRUNCH_BASE_API std::uint32_t GetCpuidMaxFunction();
 
 }
 

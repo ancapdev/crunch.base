@@ -16,6 +16,7 @@ endif()
 
 vpm_add_library(crunch_base_lib
   include/crunch/base/align.hpp
+  include/crunch/base/api.hpp
   include/crunch/base/assert.hpp
   include/crunch/base/bit_utility.hpp
   include/crunch/base/debug.hpp
@@ -40,6 +41,7 @@ vpm_add_library(crunch_base_lib
   include/crunch/base/stream_as_binary.hpp
   source/assert.cpp
   source/duration.cpp
+  source/exception.cpp
   source/platform/${PLATFORM_NAME}/assert.cpp
   source/platform/${PLATFORM_NAME}/high_frequency_timer.cpp
   ${_platformFiles})
