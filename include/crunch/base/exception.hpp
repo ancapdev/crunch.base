@@ -20,7 +20,7 @@ public:
 
     ~Exception() CRUNCH_NOEXCEPT;
 
-    char const* what() const;
+    char const* what() const CRUNCH_NOEXCEPT CRUNCH_OVERRIDE;
 
 private:
     std::string mMessage;

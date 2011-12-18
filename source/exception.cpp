@@ -9,10 +9,10 @@ Exception::Exception(std::string const& message)
     : mMessage(message)
 {}
 
-Exception::~Exception()
+Exception::~Exception() CRUNCH_NOEXCEPT
 {}
 
-char const* Exception::what() const
+char const* Exception::what() const CRUNCH_NOEXCEPT
 {
     return mMessage.c_str();
 }
