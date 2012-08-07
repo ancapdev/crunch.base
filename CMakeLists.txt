@@ -46,7 +46,7 @@ vpm_add_library(crunch_base_lib
   source/platform/${PLATFORM_NAME}/high_frequency_timer.cpp
   ${_platformFiles})
 
-if (UNIX)
+if (UNIX AND NOT APPLE)
   target_link_libraries(crunch_base_lib rt)
 endif()
 

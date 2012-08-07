@@ -9,6 +9,8 @@
 #include "crunch/base/platform.hpp"
 
 #if defined (CRUNCH_PLATFORM_WIN32)
+#elif defined (CRUNCH_PLATFORM_DARWIN)
+#   include <mach/mach_time.h>
 #elif defined (CRUNCH_PLATFORM_LINUX)
 #   include <time.h>
 #else
@@ -22,6 +24,9 @@ class CRUNCH_BASE_API HighFrequencyTimer
 public:
 #if defined (CRUNCH_PLATFORM_WIN32)
     typedef __int64 SampleType;
+    HighFrequencyTimer();
+#elif defined (CRUNCH_PLATFORM_DARWIN)
+    typedef std::uint64_t SampleType;
     HighFrequencyTimer();
 #else
     typedef timespec SampleType;
@@ -37,6 +42,9 @@ public:
 private:
 #if defined (CRUNCH_PLATFORM_WIN32)
     __int64 mFrequency;
+    double mInvFrequency;
+#elif defined (CRUNCH_PLATFORM_DARWIN)
+    mach_timebase_info_data_t mTimebaseInfo;
     double mInvFrequency;
 #endif
 };

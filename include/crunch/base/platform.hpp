@@ -8,6 +8,8 @@
 #   define CRUNCH_PLATFORM_WIN32
 #elif defined (__linux__)
 #   define CRUNCH_PLATFORM_LINUX
+#elif defined (__APPLE__)
+#   define CRUNCH_PLATFORM_DARWIN
 #else
 #   error "Unknown platform"
 #endif

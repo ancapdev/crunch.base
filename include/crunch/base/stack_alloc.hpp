@@ -9,7 +9,7 @@
 #if defined (CRUNCH_PLATFORM_WIN32)
 #   include <malloc.h>
 #   define CRUNCH_STACK_ALLOC(s) _alloca(s)
-#elif defined (CRUNCH_PLATFORM_LINUX)
+#elif defined (CRUNCH_PLATFORM_LINUX) || defined (CRUNCH_PLATFORM_DARWIN)
 #   include <alloca.h>
 #   define CRUNCH_STACK_ALLOC(s) alloca(s)
 #else
