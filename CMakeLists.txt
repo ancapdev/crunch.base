@@ -1,7 +1,7 @@
 # Copyright (c) 2011-2013, Christian Rorvik
 # Distributed under the Simplified BSD License (See accompanying file LICENSE.txt)
 
-include(configure.cmake)
+vpm_depend_self()
 
 if(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86" OR
     ${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
@@ -46,21 +46,18 @@ vpm_add_library(crunch_base_lib
   source/platform/${VPM_PLATFORM_NAME}/high_frequency_timer.cpp
   ${_platformFiles})
 
-if (UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
   target_link_libraries(crunch_base_lib rt)
 endif()
 
-if(NOT CRUNCH_NO_TESTS)
+if(VPM_CURRENT_PACKAGE_IS_ROOT)
   vpm_set_default_version(crunch.test master)
   vpm_depend(crunch.test)
 
-  add_executable(crunch_base_test
+  crunch_add_test(crunch_base_test
     test/intrusive_ptr_tests.cpp
     test/memory_tests.cpp)
 
   target_link_libraries(crunch_base_test
-    crunch_base_lib
-    crunch_test_lib)
-
-  crunch_add_test(crunch_base_test)
+    crunch_base_lib)
 endif()
