@@ -42,8 +42,8 @@ vpm_add_library(crunch_base_lib
   source/assert.cpp
   source/duration.cpp
   source/exception.cpp
-  source/platform/${PLATFORM_NAME}/assert.cpp
-  source/platform/${PLATFORM_NAME}/high_frequency_timer.cpp
+  source/platform/${VPM_PLATFORM_NAME}/assert.cpp
+  source/platform/${VPM_PLATFORM_NAME}/high_frequency_timer.cpp
   ${_platformFiles})
 
 if (UNIX AND NOT APPLE)
